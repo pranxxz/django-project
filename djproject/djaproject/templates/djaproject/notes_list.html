@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Notes</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'djaproject/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>My Notes</h1>
+        <a href="{% url 'add_note' %}">➕ Add Note</a>
+        <ul>
+            {% for note in notes %}
+                <li>
+                    <strong>{{ note.title }}</strong><br>
+                    {{ note.content }} <br>
+                    <em>{{ note.created_at }}</em>
+                </li>
+            {% empty %}
+                <li>No notes yet.</li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
